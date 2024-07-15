@@ -50,6 +50,7 @@ instruction_str = (
     "3. The code should represent a solution to the query.\n"
     "4. PRINT ONLY THE EXPRESSION\n"
     "5. Do not quote the expression.\n"
+    "6. If the query asks for the name, make sure to return the 'Player' column value instead of the ID.\n"
 )
 
 # Vorlage für den Pandas-Prompt
