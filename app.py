@@ -2,11 +2,11 @@ import streamlit as st
 from scoutAi import query_agent
 import base64
 
-# Speicher für den Konversationskontext
+# Speicher für den Konversationskontext initialisieren, falls noch nicht vorhanden
 if 'conversation_history' not in st.session_state:
     st.session_state.conversation_history = []
 
-# Streamlit Page Configuration
+# Konfiguration der Streamlit-Seite
 st.set_page_config(
     page_title="ScoutingAI - Hochschule Aalen",
     layout="wide",
@@ -19,14 +19,14 @@ st.set_page_config(
     }
 )
 
-
 # Sidebar
 with st.sidebar:
+    # Funktion zum Umwandeln eines Bildes in Base64
     def img_to_base64(image_path):
         with open(image_path, "rb") as img_file:
             return base64.b64encode(img_file.read()).decode()
 
-    # Load and display sidebar image with glowing effect
+    # Laden und Anzeigen des Sidebar-Bildes mit Glüheffekt
     img_path = "imgs/sidebar_scouting_ai.png"
     img_base64 = img_to_base64(img_path)
     st.sidebar.markdown(
@@ -35,6 +35,7 @@ with st.sidebar:
     )
     st.sidebar.markdown("---")
 
+    # Grundlegende Interaktionen in der Sidebar anzeigen
     st.sidebar.markdown("""
         ### Grundlegende Interaktionen
 
@@ -61,6 +62,7 @@ with st.sidebar:
         Viel Spaß beim Erkunden deiner Daten!
         """)
     
+    # Laden und Anzeigen des HS Aalen Logos
     hs_aalen_path = "imgs/hs-aalen.png"
     hs_aalen = img_to_base64(hs_aalen_path)
     st.sidebar.markdown(
@@ -68,17 +70,19 @@ with st.sidebar:
         unsafe_allow_html=True,
     )
 
-
-        
+# Überschrift der Hauptseite
 st.header("GenAI für die Extraktion von Daten aus Fußball")
 
-# User input for chat
+# Benutzereingabe für den Chat
 chat_input = st.chat_input("Ask me about football:")
 if chat_input:
+    # Abfrage an den Agenten senden und Konversationshistorie aktualisieren
     result, st.session_state.conversation_history = query_agent(chat_input, st.session_state.conversation_history)
 
+    # Letzten 20 Nachrichten in der Konversationshistorie anzeigen
     for message in st.session_state.conversation_history[-20:]:
         role = message["role"]
         
+        # Nachricht im Chat-Format anzeigen
         with st.chat_message(role):
             st.write(message["content"])
