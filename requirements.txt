@@ -3,3 +3,9 @@ llama_index.experimental
 streamlit 
 pandas
 python-dotenv 
+selenium
+pandas
+beautifulsoup4
+lxml
+chromedriver-autoinstaller
+tqdm

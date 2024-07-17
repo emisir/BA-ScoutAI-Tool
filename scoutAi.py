@@ -50,7 +50,6 @@ instruction_str = (
     "3. The code should represent a solution to the query.\n"
     "4. PRINT ONLY THE EXPRESSION\n"
     "5. Do not quote the expression.\n"
-    "6. If the query asks for the name, make sure to return the 'Player' column value instead of the ID.\n"
 )
 
 # Vorlage für den Pandas-Prompt
@@ -80,7 +79,7 @@ pandas_prompt = PromptTemplate(pandas_prompt_str).partial_format(
 )
 pandas_output_parser = PandasInstructionParser(df)
 response_synthesis_prompt = PromptTemplate(response_synthesis_prompt_str)
-llm = OpenAI(model="gpt-3.5-turbo")
+llm = OpenAI(model="gpt-4o")
 
 # Erstellen der QueryPipeline mit den Modulen
 qp = QP(

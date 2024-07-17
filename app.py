@@ -46,20 +46,19 @@ with st.sidebar:
 
         ### Beispiele für Abfragen:
 
-        - *Wie viele Tore hat Harry Kane in der Saison 2023/2024 erzielt?*
-        - *Berechne den Durchschnitt der Tore pro Spieler.*
+        - *Wie viele Tore hat Harry Kane in der Saison 2023-2024 erzielt?*
+        - *Welcher spieler hat die meisten gelben karten in der Saison 2023-2024*
+        - *Wie effizent ist Jamal Musiala wenn es passen geht*
+        
 
         ### Schritte zur Verwendung:
 
-        1. **Abfrage einreichen:** Gebe deine Abfrage oder Anweisung in das Eingabefeld ein und klicke auf "Abfrage einreichen".
+        1. **Abfrage einreichen:** Gebe deine Abfrage oder Anweisung in das Eingabefeld ein und drücke Enter.
         2. **Ergebnisse anzeigen:** Die Ergebnisse deiner Abfrage werden im Hauptbereich der Anwendung angezeigt.
 
         ### Hinweise:
 
         - Verwende präzise und klare Anweisungen für die Abfragen, um genaue Ergebnisse zu erhalten.
-        - Nutze die Filter- und Sortierfunktionen, um spezifische Datenbereiche zu analysieren.
-
-        Viel Spaß beim Erkunden deiner Daten!
         """)
     
     # Laden und Anzeigen des HS Aalen Logos
