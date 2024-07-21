@@ -42,7 +42,6 @@ with st.sidebar:
         Hier sind einige grundlegende Interaktionen, die du verwenden kannst:
 
         - **Abfrage einreichen:** Stelle eine Frage oder Anweisung, um eine Abfrage durchzuführen.
-        - **Ergebnisse zusammenfassen:** Erstelle Zusammenfassungen oder Aggregationen der Daten.
 
         ### Beispiele für Abfragen:
 
