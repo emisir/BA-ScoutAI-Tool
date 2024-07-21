@@ -79,7 +79,7 @@ pandas_prompt = PromptTemplate(pandas_prompt_str).partial_format(
 )
 pandas_output_parser = PandasInstructionParser(df)
 response_synthesis_prompt = PromptTemplate(response_synthesis_prompt_str)
-llm = OpenAI(model="gpt-4o-mini")
+llm = OpenAI(model="gpt-4-turbo")
 
 # Erstellen der QueryPipeline mit den Modulen
 qp = QP(
