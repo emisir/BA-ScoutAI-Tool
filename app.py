@@ -10,12 +10,12 @@ st.set_page_config(
     menu_items={
         "About": """
             ## ScoutingAI - Hochschule Aalen
-            The AI Assistant, ScoutingAI, is designed to help in scouting football players.
+            Der KI-Assistent ScoutingAI wurde entwickelt, um bei der Talentsuche von Fußballspielern zu unterstützen.
         """
     }
 )
 
-# Speicher für den Konversationskontext initialisieren, falls noch nicht vorhanden
+# Initialisieren des Konversationskontexts, falls noch nicht vorhanden
 if 'conversation_history' not in st.session_state:
     st.session_state.conversation_history = []
 
@@ -30,49 +30,53 @@ with st.sidebar:
     img_path = "imgs/sidebar_scouting_ai.png"
     img_base64 = img_to_base64(img_path)
     st.sidebar.markdown(
-        f'<img src="data:image/png;base64,{img_base64}" >',
+        f'<img src="data:image/png;base64,{img_base64}" alt="ScoutingAI Logo">',
         unsafe_allow_html=True,
     )
     st.sidebar.markdown("---")
 
     # Grundlegende Interaktionen in der Sidebar anzeigen
     st.sidebar.markdown("""
+        ### Wissensstand
+        Das Wissen des Tools umfasst die Bundesliga, 2. Bundesliga, 3. Bundesliga und die Saisons 2021-2024.
+
         ### Grundlegende Interaktionen
 
         Hier sind einige grundlegende Interaktionen, die du verwenden kannst:
 
         - **Abfrage einreichen:** Stelle eine Frage oder Anweisung, um eine Abfrage durchzuführen.
+        - **Kein Chatbot:** Folgefragen werden nicht beantwortet.
 
         ### Beispiele für Abfragen:
 
         - *Wie viele Tore hat Harry Kane in der Saison 2023-2024 erzielt?*
-        - *Welcher spieler hat die meisten gelben karten in der Saison 2023-2024*
-        - *Wie effizent ist Jamal Musiala wenn es passen geht*
-        
+        - *Welcher Spieler hat die meisten gelben Karten in der Saison 2023-2024?*
+        - *Wie effizient ist Jamal Musiala beim Passen?*
 
         ### Schritte zur Verwendung:
 
-        1. **Abfrage einreichen:** Gebe deine Abfrage oder Anweisung in das Eingabefeld ein und drücke Enter.
+        1. **Abfrage einreichen:** Gib deine Abfrage oder Anweisung in das Eingabefeld ein und drücke Enter.
         2. **Ergebnisse anzeigen:** Die Ergebnisse deiner Abfrage werden im Hauptbereich der Anwendung angezeigt.
 
         ### Hinweise:
 
         - Verwende präzise und klare Anweisungen für die Abfragen, um genaue Ergebnisse zu erhalten.
+        - Je genauer die Frage, desto besser die Antwort.
         """)
     
     # Laden und Anzeigen des HS Aalen Logos
     hs_aalen_path = "imgs/hs-aalen.png"
     hs_aalen = img_to_base64(hs_aalen_path)
     st.sidebar.markdown(
-        f'<img src="data:image/png;base64,{hs_aalen}" >',
+        f'<img src="data:image/png;base64,{hs_aalen}" alt="Hochschule Aalen Logo">',
         unsafe_allow_html=True,
     )
 
 # Überschrift der Hauptseite
-st.header("GenAI für die Extraktion von Daten aus Fußball")
+st.header("GenAI für die Extraktion von Fußball-Daten")
 
 # Benutzereingabe für den Chat
-chat_input = st.chat_input("Ask me about football:")
+chat_input = st.chat_input("Frage mich etwas über Fußball:")
 if chat_input:
     # Abfrage an den Agenten senden und Konversationshistorie aktualisieren
     result, st.session_state.conversation_history = query_agent(chat_input, st.session_state.conversation_history)
