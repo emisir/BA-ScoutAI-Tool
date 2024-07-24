@@ -10,8 +10,10 @@ import pandas as pd
 import os
 import streamlit as st
 
-# Laden der Umgebungsvariablen aus einer .env Datei
-st.secrets.api_key
+api_key = st.secrets["api_key"]["OPENAI_API_KEY"]
+
+st.write(f"The OpenAI API key is: {api_key}")
+
 
 
 # Verzeichnis, in dem sich die CSV-Dateien befinden
