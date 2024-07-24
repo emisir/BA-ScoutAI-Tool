@@ -6,12 +6,13 @@ from llama_index.core.query_pipeline import (
 from llama_index.experimental.query_engine.pandas import PandasInstructionParser as PandasInstructionParser
 from llama_index.llms.openai import OpenAI
 from llama_index.core.prompts import PromptTemplate as PromptTemplate
-from dotenv import load_dotenv
 import pandas as pd
 import os
+import streamlit as st
 
 # Laden der Umgebungsvariablen aus einer .env Datei
-load_dotenv()
+st.secrets["API_KEY"]
+
 
 # Verzeichnis, in dem sich die CSV-Dateien befinden
 data_dir = "csv"
