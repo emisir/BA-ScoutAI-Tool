@@ -11,7 +11,7 @@ import os
 import streamlit as st
 
 # Laden der Umgebungsvariablen aus einer .env Datei
-st.secrets["API_KEY"]
+st.secrets.api_key
 
 
 # Verzeichnis, in dem sich die CSV-Dateien befinden
