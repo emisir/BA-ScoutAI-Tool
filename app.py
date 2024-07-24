@@ -2,10 +2,6 @@ import streamlit as st
 from scoutAi import query_agent
 import base64
 
-# Speicher für den Konversationskontext initialisieren, falls noch nicht vorhanden
-if 'conversation_history' not in st.session_state:
-    st.session_state.conversation_history = []
-
 # Konfiguration der Streamlit-Seite
 st.set_page_config(
     page_title="ScoutingAI - Hochschule Aalen",
@@ -18,6 +14,10 @@ st.set_page_config(
         """
     }
 )
+
+# Speicher für den Konversationskontext initialisieren, falls noch nicht vorhanden
+if 'conversation_history' not in st.session_state:
+    st.session_state.conversation_history = []
 
 # Sidebar
 with st.sidebar:

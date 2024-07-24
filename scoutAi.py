@@ -12,10 +12,6 @@ import streamlit as st
 
 api_key = st.secrets["api_key"]["OPENAI_API_KEY"]
 
-st.write(f"The OpenAI API key is: {api_key}")
-
-
-
 # Verzeichnis, in dem sich die CSV-Dateien befinden
 data_dir = "csv"
 
