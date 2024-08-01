@@ -78,7 +78,7 @@ pandas_prompt = PromptTemplate(pandas_prompt_str).partial_format(
 )
 pandas_output_parser = PandasInstructionParser(df)
 response_synthesis_prompt = PromptTemplate(response_synthesis_prompt_str)
-llm = OpenAI(api_key=api_key, model="gpt-4-turbo")  
+llm = OpenAI(api_key=api_key, model="gpt-4o")  
 
 # Erstellen der QueryPipeline mit den Modulen
 qp = QP(
@@ -106,11 +106,13 @@ qp.add_links(
 qp.add_link("response_synthesis_prompt", "llm2")
 
 def query_agent(prompt, history):
+    if "season" not in prompt.lower() and "saison" not in prompt.lower():
+        prompt = f"{prompt} for the 2023-2024 season"
     response = qp.run(query_str=prompt)
     message_obj = response.message  
     response_text = message_obj.content
     cleaned_response = response_text.replace("assistant: ", "", 1)
-    history.append({"role": "user", "content": prompt})
+    history.append({"role": "user", "content": prompt.replace("for the 2023-2024 season","",1)})
     history.append({"role": "assistant", "content": cleaned_response})
     print(cleaned_response)
     return cleaned_response, history
