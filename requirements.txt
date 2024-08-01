@@ -1,11 +1,4 @@
-llama_index
-llama_index.experimental
-streamlit 
+llama-index
+openai
 pandas
-python-dotenv 
-selenium
-pandas
-beautifulsoup4
-lxml
-chromedriver-autoinstaller
-tqdm
+streamlit
