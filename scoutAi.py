@@ -42,34 +42,35 @@ for filename in os.listdir(data_dir):
 df = pd.concat(dataframes_list, ignore_index=True)
 print(df.head())  
 
+# Auf Deutsch übersetzt
 # Anweisungen zur Umwandlung der Anfrage in ausführbaren Pandas-Code
 instruction_str = (
-    "1. Convert the query to executable Python code using Pandas.\n"
-    "2. The final line of code should be a Python expression that can be called with the eval() function.\n"
-    "3. The code should represent a solution to the query.\n"
-    "4. PRINT ONLY THE EXPRESSION\n"
-    "5. Do not quote the expression.\n"
+    "1. Konvertiere die Anfrage in ausführbaren Python-Code unter Verwendung von Pandas.\n"
+    "2. Die letzte Codezeile sollte ein Python-Ausdruck sein, der mit der eval() Funktion aufgerufen werden kann.\n"
+    "3. Der Code sollte eine Lösung für die Anfrage darstellen.\n"
+    "4. DRUCKE NUR DEN AUSDRUCK\n"
+    "5. Zitiere den Ausdruck nicht.\n"
 )
 
 # Vorlage für den Pandas-Prompt
 pandas_prompt_str = (
-    "You are working with a pandas dataframe in Python.\n"
-    "The name of the dataframe is df.\n"
-    "This is the result of print(df.head()):\n"
+    "Sie arbeiten mit einem Pandas DataFrame in Python.\n"
+    "Der Name des DataFrames ist df.\n"
+    "Dies ist das Ergebnis von print(df.head()):\n"
     "{df_str}\n\n"
-    "Follow these instructions:\n"
+    "Befolgen Sie diese Anweisungen:\n"
     "{instruction_str}\n"
-    "Query: {query_str}\n\n"
-    "Expression:"
+    "Anfrage: {query_str}\n\n"
+    "Ausdruck:"
 )
 
 # Vorlage für die Synthese der Antwort
 response_synthesis_prompt_str = (
-    "Given an input question, synthesize a response from the query results.\n"
-    "Query: {query_str}\n\n"
-    "Pandas Instructions (optional):\n{pandas_instructions}\n\n"
-    "Pandas Output: {pandas_output}\n\n"
-    "Response: "
+    "Geben Sie basierend auf einer Eingabefrage eine Antwort aus den Abfrageergebnissen.\n"
+    "Anfrage: {query_str}\n\n"
+    "Pandas-Anweisungen (optional):\n{pandas_instructions}\n\n"
+    "Pandas-Ausgabe: {pandas_output}\n\n"
+    "Antwort auf Deutsch: "
 )
 
 # Erstellen der Prompt-Templates und Parsers
@@ -110,7 +111,7 @@ def query_agent(prompt, history):
     message_obj = response.message  
     response_text = message_obj.content
     cleaned_response = response_text.replace("assistant: ", "", 1)
-    history.append({"role": "user", "content": prompt.replace("for the 2023-2024 season","",1)})
+    history.append({"role": "user", "content": prompt})
     history.append({"role": "assistant", "content": cleaned_response})
     print(cleaned_response)
     return cleaned_response, history
