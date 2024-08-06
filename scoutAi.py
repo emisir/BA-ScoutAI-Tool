@@ -106,8 +106,6 @@ qp.add_links(
 qp.add_link("response_synthesis_prompt", "llm2")
 
 def query_agent(prompt, history):
-    if "season" not in prompt.lower() and "saison" not in prompt.lower():
-        prompt = f"{prompt} for the 2023-2024 season"
     response = qp.run(query_str=prompt)
     message_obj = response.message  
     response_text = message_obj.content
